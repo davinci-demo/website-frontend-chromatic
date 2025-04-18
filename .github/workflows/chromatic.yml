@@ -18,10 +18,13 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         #👇 Adds Chromatic as a step in the workflow
       - run: bun install
-      - run: bun run build-storybook
-####      - uses: chromaui/action@latest
+####      - run: bun run build-storybook
+      - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
-####        with:
+        with:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
-####          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-####          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          buildCommand: bun run build-storybook
+          outputDir: storybook-static
+
